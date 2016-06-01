@@ -24,6 +24,19 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="search-form-navbar-list-item">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { search = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            string v = Request.QueryString["search"];
+
+                            @Html.TextBox("search", v, new Dictionary<string, object> { { "class", "form-control navbar-search-box" }, { "id", "srch-term" } })
+
+
+                            <button class="btn btn-default navbar-search-button" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+                        }
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

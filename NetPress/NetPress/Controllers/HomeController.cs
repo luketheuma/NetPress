@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NetPress.Models;
 
 namespace NetPress.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private NetPressDbModel db = new NetPressDbModel();
+
+        public ActionResult Index(string search)
         {
+            if (search == null)
+                search = "";
+
+            List<Blog> blogList = new List<Blog>();
+            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
+            if (search != "")
+            {
+                blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())).ToList();
+            }
+            ViewBag.blogList = blogList;
             return View();
         }
 

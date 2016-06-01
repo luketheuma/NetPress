@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-search-box{
+    float:left;
+    width:inherit;
+    margin-top:3%;
+}
+
+.btn-default{
+    margin-top:3%;
+}
