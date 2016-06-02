@@ -189,8 +189,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NetPressDbModel.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\Test.cs" />
-    <Compile Include="Controllers\TESTController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,8 +249,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\TEST\Index.cshtml" />
-    <Content Include="Views\TEST\Welcome.cshtml" />
     <Content Include="Views\Blogs\Create.cshtml" />
     <Content Include="Views\Blogs\Delete.cshtml" />
     <Content Include="Views\Blogs\Details.cshtml" />

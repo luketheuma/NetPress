@@ -12,7 +12,7 @@ namespace NetPress.Controllers
 {
     public class BlogsController : Controller
     {
-        private NetPressDbContext db = new NetPressDbContext();
+        private NetPressDbModel db = new NetPressDbModel();
 
         // GET: Blogs
         public ActionResult Index()
