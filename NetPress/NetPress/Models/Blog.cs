@@ -4,7 +4,7 @@ namespace NetPress.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+    using System.Data.Entity;
 
     public partial class Blog
     {
@@ -36,5 +36,10 @@ namespace NetPress.Models
         public virtual Category Category1 { get; set; }
 
         public virtual Status Status1 { get; set; }
+    }
+
+    public class NetPressDbContext : DbContext
+    {
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
