@@ -50,6 +50,7 @@ namespace NetPress.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,5 +124,14 @@ namespace NetPress.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult nextItem()
+        {
+            List<Blog> b = db.Blogs.ToList();
+
+            return PartialView("_item", b );
+        }
+        
+
     }
 }

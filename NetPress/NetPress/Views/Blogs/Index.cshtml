@@ -42,6 +42,9 @@
 
 @foreach (var item in Model)
 {
+
+
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -74,3 +77,10 @@
 }
 
 </table>
+
+
+<div class="container">
+    @{
+        Html.RenderAction("nextItem", "Blogs");
+    }
+</div>
