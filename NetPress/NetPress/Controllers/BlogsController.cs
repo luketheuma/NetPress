@@ -15,8 +15,10 @@ namespace NetPress.Controllers
         private NetPressDbModel db = new NetPressDbModel();
 
         // GET: Blogs
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            ViewBag.search = search;
+            ViewBag.categoryList = db.Categories.ToList();
             return View(db.Blogs.ToList());
         }
 
@@ -125,11 +127,19 @@ namespace NetPress.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult homepage()
+        public ActionResult homepage(string search)
         {
-            List<Blog> b = db.Blogs.ToList();
-            b = b.OrderByDescending(x => x.DateCreated).ToList();
-            return PartialView("_item", b );
+            List<Blog> blogList = db.Blogs.ToList();
+            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
+            if (search != null)
+            {
+                blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.Title.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
+            }
+            ViewBag.blogList = blogList;
+            return PartialView("_item", blogList );
         }
         
 

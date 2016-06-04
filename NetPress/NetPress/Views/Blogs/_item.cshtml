@@ -1,26 +1,53 @@
 ﻿@model IEnumerable<NetPress.Models.Blog>
 
 
-@foreach(NetPress.Models.Blog blog in Model)
+@foreach (NetPress.Models.Blog blog in Model)
 {
     <!-- content -->
-        <div class="content">
-            <div class="travelling">
-                <div class="col-md-12 travelling1">
-                    <h1><a href="#"> @blog.Title </a></h1>
-                    <h5>by <a href="#"> @blog.AspNetUser.UserName ,</a> @blog.DateCreated ,<a href="#"> @blog.Category.Value </a></h5>
-                    <p>
-                        @blog.Content
-                    </p>
-                </div>
-
-                <div class="clearfix"> </div>
+    <div class="content">
+        <div class="travelling">
+            <div class="col-md-12 travelling1">
+                <h1><a data-toggle="modal" data-target="#BlogModal"> @blog.Title </a></h1>
+                <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                <p>
+                    @if (blog.Content.Length < 200)
+                    {
+                      @blog.Content;
+                    }
+                    else
+                    {
+                         @blog.Content;
+                    }
+                    ...
+                </p>
             </div>
+            <div class="clearfix"> </div>
+        </div>
 
-            <div class="loadmore">
-                <a class="more" href="#">Read More</a>
+        <div class="loadmore">
+            <a class="more" data-toggle="modal" data-target="#BlogModal">Read More</a>
+        </div>
+
+    </div>
+    <!-- content -->
+
+    <!-- Modal -->
+    <div id="BlogModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="content">
+                <div class="col-md-12 travelling1">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h1>@blog.Title</h1>
+                    <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                </div>
+                <div class="modal-body">
+                    <p>@blog.Content</p>
+                </div>
             </div>
 
         </div>
-    <!-- content -->
+    </div>
+    <!-- Modal -->
 }

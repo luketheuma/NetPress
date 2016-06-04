@@ -1141,7 +1141,7 @@ a.load {
 .navbar-inverse .navbar-nav>li>a:hover{
 	color: #999;
 	border-bottom: 2px solid #FF6000;
-	
+    background-color: #ffffff;
 }
 
 .logo-image{
@@ -1152,3 +1152,32 @@ a.load {
 .navbar-header{
     width: 16%;
 }
+
+#search{
+    float:left;
+    width:inherit;
+    margin-top:3%;
+}
+
+#search-btn{
+     margin-top:3%;
+}
+
+/*---- Category dropdown css ----*/
+
+.navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #999;
+    background-color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #999;
+    background-color: #FFF;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    border-color: #ff6000;
+    background-color: #FFF;
+}
+
+/*-------------------------------*/
