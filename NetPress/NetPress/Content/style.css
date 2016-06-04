@@ -162,6 +162,7 @@ i.aeroplane{
 	margin: 1em 0em 2em;
 }
 .travelling2  a{
+    text-align: justify;
 	font-size:1.3em;
 	font-weight:400;
 	color:#7D7D7D;

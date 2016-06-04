@@ -125,10 +125,10 @@ namespace NetPress.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult nextItem()
+        public ActionResult homepage()
         {
             List<Blog> b = db.Blogs.ToList();
-
+            b = b.OrderByDescending(x => x.DateCreated).ToList();
             return PartialView("_item", b );
         }
         
