@@ -7,16 +7,25 @@
     <div class="content">
         <div class="travelling">
             <div class="col-md-12 travelling1">
-                <h1><a data-toggle="modal" data-target="#BlogModal"> @blog.Title </a></h1>
-                <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
-                <p>
-                    @if (blog.Content.Length < 200)
+                <h1 class="col-md-10"><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
+                <div class="col-md-2">
+                    @* if user is admin, or user has blog *@
+                    @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
                     {
-                      @blog.Content;
+                        <img class="edit-delete" src="~/Images/edit_1.png" />
+                        <img class="edit-delete" src="~/Images/delete_1.png" />
+                    }
+                </div>
+
+                <h5 class="col-md-12">by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                <p>
+                    @if (blog.Content.Length < 400)
+                    {
+                      @Html.Raw(blog.Content);
                     }
                     else
                     {
-                         @blog.Content;
+                        @blog.Content.Substring(0, 400);
                     }
                     ...
                 </p>
@@ -24,19 +33,19 @@
             <div class="clearfix"> </div>
         </div>
 
-        <div class="loadmore">
+        @*<div class="loadmore">
             <a class="more" data-toggle="modal" data-target="#BlogModal">Read More</a>
-        </div>
+        </div>*@
 
     </div>
     <!-- content -->
 
     <!-- Modal -->
-    <div id="BlogModal" class="modal fade" role="dialog">
+    <div id="BlogModal-@blog.BlogId" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="content">
+            <div class="modal-content">
                 <div class="col-md-12 travelling1">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h1>@blog.Title</h1>

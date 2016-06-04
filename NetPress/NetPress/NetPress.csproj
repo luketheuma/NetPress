@@ -204,6 +204,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\cream.jpg" />
+    <Content Include="Images\delete_1.png" />
+    <Content Include="Images\edit_1.png" />
     <Content Include="Images\menu.png" />
     <Content Include="Images\NetPress_logo.png" />
     <Content Include="Images\search.png" />
