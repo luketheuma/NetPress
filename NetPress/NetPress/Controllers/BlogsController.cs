@@ -111,7 +111,8 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
-            ViewBag.userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
+            ViewBag.userid = blog.AspNetUser.Id;
+            ViewBag.dateCreated = blog.DateCreated;
             return View(blog);
         }
 
