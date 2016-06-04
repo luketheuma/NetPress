@@ -6,43 +6,6 @@
 }
 
 
-@*@foreach (var item in Model)
-{
-
-
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BlogId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BlogId })
-            </td>
-        </tr>
-
-}*@
-
-
 <div class="container">
     @{
         string test = ViewBag.search;

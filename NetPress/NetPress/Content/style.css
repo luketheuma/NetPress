@@ -98,7 +98,7 @@ i.aeroplane{
 	width: 100px;
     height: 100px;
 	background:  url(../images/aeroplane.jpg)no-repeat 0px 0px;
-	float:left;
+	float:left; 
     vertical-align: middle;
 	position: absolute;
 	top: 5em;
@@ -110,6 +110,9 @@ i.aeroplane{
 	padding: 2em 2em;
 	margin: 0em 0em 2em;
     margin-top: 2em;
+    border-radius: 10px;
+    box-shadow: 10px 10px #d8d8d8;
+    border: 1px solid #d8d8d8;
 }
 .travelling{
 	margin:2em 0em 0em;
@@ -1123,12 +1126,29 @@ a.load {
     margin: 0 auto;
 }
 
-#search {
-    float: left;
-    width: inherit;
-    margin-top: 3%;
+.navbar-inverse{
+    border: none;
+    background-color: #FFF;
+    box-shadow: 0 2px #d8d8d8;
+}
+.navbar-inverse .navbar-nav>li>a{
+	padding: 5px 5px 5px 5px;
+    margin: 10px 10px 5px 5px;
+	font-size: large;
+	border-bottom: 3px solid white;
 }
 
-#search-btn{
-    margin-top:3%;
+.navbar-inverse .navbar-nav>li>a:hover{
+	color: #999;
+	border-bottom: 2px solid #FF6000;
+	
+}
+
+.logo-image{
+    width: 88%;
+    padding: 5px;
+}
+
+.navbar-header{
+    width: 16%;
 }
