@@ -1152,3 +1152,13 @@ a.load {
 .navbar-header{
     width: 16%;
 }
+
+#search{
+    float:left;
+    width:inherit;
+    margin-top:3%;
+}
+
+#search-btn{
+     margin-top:3%;
+}

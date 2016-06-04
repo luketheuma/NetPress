@@ -47,12 +47,12 @@ namespace NetPress.Models
 
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Blogs)
-                .WithOptional(e => e.Category1)
+                .WithOptional(e => e.CategoryObject)
                 .HasForeignKey(e => e.Category);
 
             modelBuilder.Entity<Status>()
                 .HasMany(e => e.Blogs)
-                .WithOptional(e => e.Status1)
+                .WithOptional(e => e.StatusObject)
                 .HasForeignKey(e => e.Status);
 
             modelBuilder.Entity<database_firewall_rules>()

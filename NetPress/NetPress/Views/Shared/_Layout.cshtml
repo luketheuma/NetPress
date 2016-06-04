@@ -33,17 +33,32 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="search-form-navbar-list-item">
+                        @using (Html.BeginForm("Index", "Blogs", FormMethod.Get, new { search = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            string v = Request.QueryString["search"];
+
+                            @Html.TextBox("search", v, new Dictionary<string, object> { { "class", "form-control navbar-search-box" }, { "id", "search" } })
+
+
+                            <button id="search-btn" type="submit" class="btn btn-default navbar-search-button">
+                                Search
+                            </button>
+
+                        }
+                    </li>
                 </ul>
                 
                 @Html.Partial("_LoginPartial")
-                <form class="navbar-form navbar-right" role="search">
+                @*<form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control">
+                        <input type="text" id ="search" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-default">
                         Search
                     </button>
-                </form>
+                </form>*@
             </div>
         </div>
     </div>
