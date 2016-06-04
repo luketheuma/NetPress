@@ -202,6 +202,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\cream.jpg" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\NetPress_logo.png" />
     <Content Include="Images\search.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

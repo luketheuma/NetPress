@@ -20,7 +20,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>*@
                 </button>
-                @Html.ActionLink("NetPress", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index","Blogs")">
+                    <img class="logo-image" src="~/Images/NetPress_logo.png" alt="NetPress logo">
+                </a>
+                @*@Html.ActionLink("NetPress", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
 
 
