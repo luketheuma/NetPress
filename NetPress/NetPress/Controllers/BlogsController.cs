@@ -18,6 +18,7 @@ namespace NetPress.Controllers
         public ActionResult Index(string search)
         {
             ViewBag.search = search;
+            ViewBag.categoryList = db.Categories.ToList();
             return View(db.Blogs.ToList());
         }
 
@@ -39,6 +40,25 @@ namespace NetPress.Controllers
         // GET: Blogs/Create
         public ActionResult Create()
         {
+            List<Category> categories = db.Categories.ToList();
+            List<Status> statuses = db.Statuses.ToList();
+            List<SelectListItem> dropdownCategories = new List<SelectListItem>();
+            List<SelectListItem> dropdownStatuses = new List<SelectListItem>();
+            foreach (Category c in categories)
+            {
+                dropdownCategories.Add(new SelectListItem() { Text = c.CategoryName, Value = "" + c.CategoryID });
+            }
+
+            foreach (Status s in statuses)
+            {
+                dropdownStatuses.Add(new SelectListItem() { Text = s.StatusName, Value = "" + s.StatusID });
+            }
+
+            ViewData.Add("DropCategoryItems", dropdownCategories);
+            ViewData.Add("DropStatusItems", dropdownStatuses);
+
+            ViewBag.userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
+
             return View();
         }
 
@@ -46,12 +66,16 @@ namespace NetPress.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
         {
+            var userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
+            var dateCreated = DateTime.Now;
+            blog.DateCreated = dateCreated;
+            blog.DateModified = dateCreated;
             if (ModelState.IsValid)
             {
-                var userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
+               
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");

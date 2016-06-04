@@ -8,7 +8,8 @@ namespace NetPress.Models
 
     public partial class Blog
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BlogId { get; set; }
 
         [Required]
