@@ -18,6 +18,7 @@ namespace NetPress.Controllers
         public ActionResult Index(string search)
         {
             ViewBag.search = search;
+            ViewBag.categoryList = db.Categories.ToList();
             return View(db.Blogs.ToList());
         }
 

@@ -8,7 +8,6 @@
 
 <div class="container">
     @{
-        string test = ViewBag.search;
         Html.RenderAction("homepage", "Blogs", new { search = ViewBag.search});
     }
 </div>

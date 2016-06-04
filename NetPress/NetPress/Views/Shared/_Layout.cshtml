@@ -16,9 +16,6 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    @*<span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>*@
                 </button>
                 <a href="@Url.Action("Index","Blogs")">
                     <img class="logo-image" src="~/Images/NetPress_logo.png" alt="NetPress logo">
@@ -32,7 +29,15 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown-toggle navbar-item dropdown">
+                        <a class="dropbtn">Categories<span id="arrow" class="caret"></span></a>
+                        <ul id="navbar" class="dropdown-content">
+                            @foreach (NetPress.Models.Category category in ViewBag.categoryList)
+                            {
+                                <li>@Html.ActionLink(category.CategoryName, "Index", "Blogs", new { search = category.CategoryName}, new { @class = "navbar-title" })</li>
+                            }
+                        </ul>
+                    </li>
                     <li class="search-form-navbar-list-item">
                         @using (Html.BeginForm("Index", "Blogs", FormMethod.Get, new { search = "multipart/form-data" }))
                         {
