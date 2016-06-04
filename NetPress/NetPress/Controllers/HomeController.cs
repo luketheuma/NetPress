@@ -23,7 +23,7 @@ namespace NetPress.Controllers
                 blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
             ViewBag.blogList = blogList;
-            return View();
+            return View(blogList);
         }
 
         public ActionResult About()
