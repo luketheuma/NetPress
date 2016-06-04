@@ -15,8 +15,9 @@ namespace NetPress.Controllers
         private NetPressDbModel db = new NetPressDbModel();
 
         // GET: Blogs
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            ViewBag.search = search;
             return View(db.Blogs.ToList());
         }
 
@@ -50,6 +51,7 @@ namespace NetPress.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,5 +125,22 @@ namespace NetPress.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult homepage(string search)
+        {
+            List<Blog> blogList = db.Blogs.ToList();
+            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
+            if (search != null)
+            {
+                blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.Title.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
+                                            || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
+            }
+            ViewBag.blogList = blogList;
+            return PartialView("_item", blogList );
+        }
+        
+
     }
 }

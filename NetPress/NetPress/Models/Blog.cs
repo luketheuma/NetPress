@@ -33,9 +33,9 @@ namespace NetPress.Models
 
         public virtual AspNetUser AspNetUser { get; set; }
 
-        public virtual Category Category1 { get; set; }
+        public virtual Category CategoryObject { get; set; }
 
-        public virtual Status Status1 { get; set; }
+        public virtual Status StatusObject { get; set; }
     }
 
     public class NetPressDbContext : DbContext

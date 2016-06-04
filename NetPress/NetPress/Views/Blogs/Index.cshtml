@@ -5,43 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateModified)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th></th>
-    </tr>
-
-    @* list of blogs*@
-
-
-
-@foreach (var item in Model)
+@*@foreach (var item in Model)
 {
+
+
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -71,6 +40,12 @@
             </td>
         </tr>
 
-}
+}*@
 
-</table>
+
+<div class="container">
+    @{
+        string test = ViewBag.search;
+        Html.RenderAction("homepage", "Blogs", new { search = ViewBag.search});
+    }
+</div>
