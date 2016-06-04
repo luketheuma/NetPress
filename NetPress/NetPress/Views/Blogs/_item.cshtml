@@ -6,18 +6,21 @@
     <!-- content -->
     <div class="content">
         <div class="travelling">
-            <div class="col-md-12 travelling1">
-                <h1 class="col-md-10"><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
-                <div class="col-md-2">
+            <div class="travelling1">
+                <div id="bar">
+                    <h1 id="header"><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
+
                     @* if user is admin, or user has blog *@
                     @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
                     {
-                        <img class="edit-delete" src="~/Images/edit_1.png" />
-                        <img class="edit-delete" src="~/Images/delete_1.png" />
+                        <span id="icons">
+                            <img class="edit-delete" src="~/Images/edit_1.png" />
+                            <img class="edit-delete" src="~/Images/delete_1.png" />
+                        </span>
                     }
                 </div>
 
-                <h5 class="col-md-12">by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                <h5 class="">by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
                 <p>
                     @if (blog.Content.Length < 400)
                     {
@@ -25,7 +28,7 @@
                     }
                     else
                     {
-                        @blog.Content.Substring(0, 400);
+                        @Html.Raw(blog.Content.Substring(0, 400));
                     }
                     ...
                 </p>
@@ -52,7 +55,7 @@
                     <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
                 </div>
                 <div class="modal-body">
-                    <p>@blog.Content</p>
+                    <p>@Html.Raw(blog.Content)</p>
                 </div>
             </div>
 

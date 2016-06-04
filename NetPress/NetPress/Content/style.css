@@ -1206,3 +1206,13 @@ a.load {
     text-align: right;
     margin-right: 15px;
 }
+
+#header{
+    float:left;
+}
+#icons{
+    float:right;
+}
+#bar{
+    height: 50px;
+}
