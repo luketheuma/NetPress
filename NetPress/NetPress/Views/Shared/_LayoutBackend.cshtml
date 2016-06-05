@@ -35,6 +35,19 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Create", "Create", "Blogs")</li>
+                    <li class="search-form-navbar-list-item">
+                        @using (Html.BeginForm("Userblogs", "Blogs", FormMethod.Get, new { search = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            string v = Request.QueryString["search"];
+
+                            @Html.TextBox("search", v, new Dictionary<string, object> { { "class", "form-control navbar-search-box" }, { "id", "search" } })
+
+                            <button id="search-btn" type="submit" class="btn btn-default navbar-search-button">
+                                Search
+                            </button>
+                        }
+                    </li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
@@ -74,7 +87,7 @@
             </div>
             <div>
                 <i class="fa fa-envelope"></i>
-                <p>netpress@gmail.com</a></p>
+                <p>netpress@gmail.com</p>
             </div>
         </div>
         <div class="footer-right">

@@ -200,12 +200,19 @@ namespace NetPress.Controllers
             return PartialView("_item", blogList );
         }
         
-        public ActionResult Userblogs()
+        public ActionResult Userblogs(string search)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
+            
             List<Blog> b = db.Blogs.ToList();
             b = b.Where(x => x.AspNetUser.UserName == User.Identity.Name).ToList();
+            if (search != null)
+            {
+                b = b.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
+                            || x.Title.ToString().ToUpper().Contains(search.ToUpper())
+                            || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
+            }
             b = b.OrderByDescending(x => x.LastModified).ToList();
   
             ViewBag.blogList = b;
