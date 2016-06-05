@@ -15,9 +15,13 @@ namespace NetPress.Controllers
         private NetPressDbModel db = new NetPressDbModel();
 
         // GET: Blogs
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? categoryId)
         {
-            ViewBag.search = search;
+            if (search == null)
+                ViewBag.search = "";
+            else
+                ViewBag.search = search;
+            ViewBag.categoryId = categoryId;
             ViewBag.categoryList = db.Categories.ToList();
             return View(db.Blogs.ToList());
         }
@@ -174,17 +178,17 @@ namespace NetPress.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult homepage(string search)
+        public ActionResult homepage(string search, int? categoryId)
         {
-            List<Blog> blogList = db.Blogs.ToList();
-            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
-            if (search != null)
+            List<Blog> blogList = (categoryId == null) ? db.Blogs.ToList() : db.Blogs.Where(x => x.Category == categoryId).ToList();
+            if (search != null && search != "null")
             {
                 blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.Title.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
+            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
             ViewBag.blogList = blogList;
             return PartialView("_item", blogList );
         }

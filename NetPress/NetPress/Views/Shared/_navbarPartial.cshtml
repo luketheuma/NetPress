@@ -1,0 +1,42 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+            <a href="@Url.Action("Index","Blogs")">
+                <img class="logo-image" src="~/Images/NetPress_logo.png" alt="NetPress logo">
+            </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("All Categories", "Index", "Blogs")</li>
+                        <li role="separator" class="divider"></li>
+                        @foreach (NetPress.Models.Category category in ViewBag.categoryList)
+                        {
+                            <li>@Html.ActionLink(category.CategoryName, "Index", "Blogs", new { search = ViewBag.search, categoryId = category.CategoryID }, new { @class = "navbar-title" })</li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="search-form-navbar-list-item">
+                    @using (Html.BeginForm("Index", "Blogs", FormMethod.Get, new { search = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        string v = Request.QueryString["search"];
+
+                        @Html.TextBox("search", v, new Dictionary<string, object> { { "class", "form-control navbar-search-box" }, { "id", "search" } })
+
+                        <button id="search-btn" type="submit" class="btn btn-default navbar-search-button">
+                            Search
+                        </button>
+                    }
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+

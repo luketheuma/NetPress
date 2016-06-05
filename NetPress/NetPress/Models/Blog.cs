@@ -29,6 +29,7 @@ namespace NetPress.Models
         public int? Category { get; set; }
 
         public int? Status { get; set; }
+
         [AllowHtml]
         public string Content { get; set; }
 
