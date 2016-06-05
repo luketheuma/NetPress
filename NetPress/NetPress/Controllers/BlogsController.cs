@@ -66,10 +66,9 @@ namespace NetPress.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
         {
-            var userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
             var dateCreated = DateTime.Now;
             blog.DateCreated = dateCreated;
             blog.DateModified = dateCreated;
@@ -96,6 +95,24 @@ namespace NetPress.Controllers
             {
                 return HttpNotFound();
             }
+            List<Category> categories = db.Categories.ToList();
+            List<Status> statuses = db.Statuses.ToList();
+            List<SelectListItem> dropdownCategories = new List<SelectListItem>();
+            List<SelectListItem> dropdownStatuses = new List<SelectListItem>();
+            foreach (Category c in categories)
+            {
+                dropdownCategories.Add(new SelectListItem() { Text = c.CategoryName, Value = "" + c.CategoryID });
+            }
+
+            foreach (Status s in statuses)
+            {
+                dropdownStatuses.Add(new SelectListItem() { Text = s.StatusName, Value = "" + s.StatusID });
+            }
+
+            ViewData.Add("DropCategoryItems", dropdownCategories);
+            ViewData.Add("DropStatusItems", dropdownStatuses);
+            ViewBag.userid = blog.AspNetUser.Id;
+            ViewBag.dateCreated = blog.DateCreated;
             return View(blog);
         }
 
@@ -106,6 +123,8 @@ namespace NetPress.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
         {
+            var dateCreated = DateTime.Now;
+            blog.DateModified = dateCreated;
             if (ModelState.IsValid)
             {
                 db.Entry(blog).State = EntityState.Modified;

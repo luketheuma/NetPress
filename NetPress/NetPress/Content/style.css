@@ -12,11 +12,11 @@ html,body{
 	font-family: 'Open Sans', sans-serif;
 }
 body a{
-    transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
+    transition:0.3s all;
+	-webkit-transition:0.3s all;
+	-moz-transition:0.3s all;
+	-o-transition:0.3s all;
+	-ms-transition:0.3s all;
 }
 .banner{
 	background: url(../images/banner.jpg) no-repeat center top;
@@ -107,12 +107,14 @@ i.aeroplane{
 .content{
 	position: relative;
 	background:#fff;
-    padding: 0em 1em;
+    padding: 0em 2em;
 	margin: 0em 0em 2em;
     margin-top: 2em;
     border-radius: 10px;
     box-shadow: 10px 10px #d8d8d8;
     border: 1px solid #d8d8d8;
+    transition: none;
+
 }
 .travelling{
 	margin:2em 0em 0em;
@@ -143,7 +145,7 @@ i.aeroplane{
 }
 .travelling1 h5{
 	font-size:1em;
-	font-weight:700;
+	font-weight:500;
 	color:#FF761A;
 	font-family: 'Open Sans', sans-serif;
 	text-align:left;
@@ -1205,13 +1207,15 @@ a.load {
     width: 30px;
     position: absolute;
     top: 8px;
-    right:60px;
-    font-size: 18px;
 }
-.delete{
-    width: 30px;
-    position: absolute;
-    top: 8px;
-    right: 16px;
-    font-size: 18px;
+
+#header{
+    float:left;
+    cursor: pointer;
+}
+#icons{
+    float:right;
+}
+#bar{
+    height: 50px;
 }

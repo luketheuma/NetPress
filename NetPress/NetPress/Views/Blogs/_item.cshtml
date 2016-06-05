@@ -6,19 +6,24 @@
     <!-- content -->
     <div class="content">
         <div class="travelling">
-            <div class="col-md-12 travelling1">
-                <h1><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
+            <div class="travelling1">
+                <div id="bar">
+                    <h1 id="header"><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
 
                 @* if user is admin, or user has blog *@
                 @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
                 {
+                 <span id="icons">
                     <a href="@Url.Action("Edit", new { id = blog.BlogId })">
                         <img class="edit" src="~/Images/edit_1.png" />
                     </a>
                     <a href="@Url.Action("Delete", new { id = blog.BlogId })">
+
                         <img  class="delete" src="~/Images/delete_1.png"/>
                     </a>
+                 </span>
                 }
+
 
                 <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
                 <p>
@@ -28,7 +33,7 @@
                     }
                     else
                     {
-                        @blog.Content.Substring(0, 400);
+                        @Html.Raw(blog.Content.Substring(0, 400));
                     }
                     ...
                 </p>
@@ -55,7 +60,7 @@
                     <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
                 </div>
                 <div class="modal-body">
-                    <p>@blog.Content</p>
+                    <p>@Html.Raw(blog.Content)</p>
                 </div>
             </div>
 
