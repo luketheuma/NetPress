@@ -14,17 +14,12 @@
 
 </head>
 <body>
-    @{ Html.RenderAction("Navbar", "Home",new { search = ViewBag.search });}
+    @{ Html.RenderAction("Navbar", "Home",new { search = ViewBag.search ,categoryId = ViewBag.categoryId});}
 
     <div class="space"></div>
-
-
-
     <div class="container body-content">
         @RenderBody()
     </div>
-
-
 
     <footer class="footer-distributed">
         <div class="footer-left">

@@ -41,13 +41,21 @@ namespace NetPress.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult Navbar(string search)
+        public ActionResult Navbar(string search, int? categoryId)
         {
             ViewBag.categoryList = db.Categories.ToList();
             if (search == null)
                 ViewBag.search = "";
             else
                 ViewBag.search = search;
+
+            if (categoryId == null)
+                ViewBag.category = "Categories";
+            else
+            {
+                List<Category> tempCat = db.Categories.Where(x => x.CategoryID == categoryId).ToList();
+                ViewBag.category = tempCat[0].CategoryName.ToString();
+            }
 
             return PartialView("_navbarPartial");
         }
