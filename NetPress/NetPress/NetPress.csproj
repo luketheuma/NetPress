@@ -196,6 +196,7 @@
   <ItemGroup>
     <Content Include="Content\Backend\bootstrap-theme.css" />
     <Content Include="Content\Backend\bootstrap.css" />
+    <Content Include="Content\Backend\footer-distributed-with-address-and-phones.css" />
     <Content Include="Content\Backend\Site.css" />
     <Content Include="Content\Backend\style.css" />
     <Content Include="Content\bootstrap-theme.css" />

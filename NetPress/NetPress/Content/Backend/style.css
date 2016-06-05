@@ -1247,3 +1247,24 @@ a.load {
 .btn-width{
     width: 40%;
 }
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.page{
+    margin: 10px 0 30px 0;
+    padding: 30px 0;
+    text-align: center;
+    border: 1px solid #757575;
+    border-radius: 30px;
+    color: #111;
+    background-color: #DDD;
+    opacity: 0.8;
+}
+
+.title{
+    padding-bottom: 20px;
+    letter-spacing: 10px;
+    font-size: 30px;
+}

@@ -19,12 +19,15 @@
     </script>
 </head>
 
+<div class="page title">
+    <h3>CREATE</h3>
+</div>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+        <div class="page form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
@@ -61,14 +64,14 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-7">
+                <div class="col-md-8">
                     @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @input = "textarea", @id = "mytextarea", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-offset-2 col-md-10" style="text-align:left;">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
