@@ -14,8 +14,12 @@
                     @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
                     {
                         <span id="icons">
-                            <img class="edit-delete" src="~/Images/edit_1.png" />
-                            <img class="edit-delete" src="~/Images/delete_1.png" />
+                            <a href="@Url.Action("Edit", new { id = blog.BlogId })">
+                                <img class="edit-delete" src="~/Images/edit_1.png" />
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = blog.BlogId })">
+                                <img class="edit-delete" src="~/Images/delete_1.png" />
+                            </a>
                         </span>
                     }
                 </div>
