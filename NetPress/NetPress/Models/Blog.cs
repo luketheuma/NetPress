@@ -5,7 +5,7 @@ namespace NetPress.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
-
+    using System.Web.Mvc;
     public partial class Blog
     {
         [Key]
@@ -29,7 +29,7 @@ namespace NetPress.Models
         public int? Category { get; set; }
 
         public int? Status { get; set; }
-
+        [AllowHtml]
         public string Content { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
