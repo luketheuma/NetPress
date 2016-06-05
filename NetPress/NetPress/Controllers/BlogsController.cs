@@ -15,9 +15,13 @@ namespace NetPress.Controllers
         private NetPressDbModel db = new NetPressDbModel();
 
         // GET: Blogs
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? categoryId)
         {
-            ViewBag.search = search;
+            if (search == null)
+                ViewBag.search = "";
+            else
+                ViewBag.search = search;
+            ViewBag.categoryId = categoryId;
             ViewBag.categoryList = db.Categories.ToList();
             return View(db.Blogs.ToList());
         }
@@ -67,11 +71,11 @@ namespace NetPress.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
+        public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
             var dateCreated = DateTime.Now;
             blog.DateCreated = dateCreated;
-            blog.DateModified = dateCreated;
+            blog.LastModified = dateCreated;
             if (ModelState.IsValid)
             {
                
@@ -121,10 +125,10 @@ namespace NetPress.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
+        public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
             var dateCreated = DateTime.Now;
-            blog.DateModified = dateCreated;
+            blog.LastModified = dateCreated;
             if (ModelState.IsValid)
             {
                 db.Entry(blog).State = EntityState.Modified;
@@ -174,17 +178,17 @@ namespace NetPress.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult homepage(string search)
+        public ActionResult homepage(string search, int? categoryId)
         {
-            List<Blog> blogList = db.Blogs.ToList();
-            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
-            if (search != null)
+            List<Blog> blogList = (categoryId == null) ? db.Blogs.ToList() : db.Blogs.Where(x => x.Category == categoryId).ToList();
+            if (search != null && search != "null")
             {
                 blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.Title.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
+            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
             ViewBag.blogList = blogList;
             return PartialView("_item", blogList );
         }

@@ -39,5 +39,17 @@ namespace NetPress.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult Navbar(string search)
+        {
+            ViewBag.categoryList = db.Categories.ToList();
+            if (search == null)
+                ViewBag.search = "";
+            else
+                ViewBag.search = search;
+
+            return PartialView("_navbarPartial");
+        }
     }
 }

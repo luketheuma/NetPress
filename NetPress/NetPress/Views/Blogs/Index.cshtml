@@ -5,9 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<script>
+        if (@ViewBag.search != "")
+        {
+            $("#search").val(@ViewBag.search);
+        }
+</script>
 <div class="container">
     @{
-        Html.RenderAction("homepage", "Blogs", new { search = ViewBag.search});
+        Html.RenderAction("homepage", "Blogs", new { search = ViewBag.search, categoryId = ViewBag.categoryId});
     }
 </div>
