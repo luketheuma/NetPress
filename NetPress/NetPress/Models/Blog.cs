@@ -20,11 +20,11 @@ namespace NetPress.Models
         [StringLength(128)]
         public string UserID { get; set; }
 
-        [Column(TypeName = "date")]
+        [Column(TypeName = "datetime")]
         public DateTime DateCreated { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? DateModified { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? LastModified { get; set; }
 
         public int? Category { get; set; }
 

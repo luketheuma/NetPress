@@ -67,11 +67,11 @@ namespace NetPress.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
+        public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
             var dateCreated = DateTime.Now;
             blog.DateCreated = dateCreated;
-            blog.DateModified = dateCreated;
+            blog.LastModified = dateCreated;
             if (ModelState.IsValid)
             {
                
@@ -121,10 +121,10 @@ namespace NetPress.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,DateModified,Category,Status,Content")] Blog blog)
+        public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
             var dateCreated = DateTime.Now;
-            blog.DateModified = dateCreated;
+            blog.LastModified = dateCreated;
             if (ModelState.IsValid)
             {
                 db.Entry(blog).State = EntityState.Modified;
