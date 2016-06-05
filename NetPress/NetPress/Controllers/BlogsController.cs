@@ -44,6 +44,8 @@ namespace NetPress.Controllers
         // GET: Blogs/Create
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Blogs");
             List<Category> categories = db.Categories.ToList();
             List<Status> statuses = db.Statuses.ToList();
             List<SelectListItem> dropdownCategories = new List<SelectListItem>();
@@ -90,6 +92,8 @@ namespace NetPress.Controllers
         // GET: Blogs/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Blogs");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -141,6 +145,8 @@ namespace NetPress.Controllers
         // GET: Blogs/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Blogs");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -195,15 +201,17 @@ namespace NetPress.Controllers
         }
         
         public ActionResult Userblogs()
-          {
-              List<Blog> b = db.Blogs.ToList();
-              b = b.Where(x => x.AspNetUser.UserName == User.Identity.Name).ToList();
-              b = b.OrderByDescending(x => x.LastModified).ToList();
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Blogs");
+            List<Blog> b = db.Blogs.ToList();
+            b = b.Where(x => x.AspNetUser.UserName == User.Identity.Name).ToList();
+            b = b.OrderByDescending(x => x.LastModified).ToList();
   
-              ViewBag.blogList = b;
+            ViewBag.blogList = b;
               
-              return View();
-       }
+            return View();
+        }
 
     }
 }

@@ -54,6 +54,8 @@ namespace NetPress.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Blogs");
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
