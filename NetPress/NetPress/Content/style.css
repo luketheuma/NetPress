@@ -151,6 +151,13 @@ i.aeroplane{
 	font-family: 'Open Sans', sans-serif;
 	text-align:left;
 }
+.travelling1 h6{
+	font-size:1em;
+	font-weight:500;
+	color: #757575;
+	font-family: 'Open Sans', sans-serif;
+	text-align:right;
+}
 .travelling2 h3{
 	font-size:2em;
 	font-weight:700;
@@ -1199,6 +1206,7 @@ a.load {
     border-radius: 10px;
     border: 1px solid #d8d8d8;
     padding: 2em;
+    padding-bottom: 1em;
 }
 .modal-body p{
     text-align: justify;
@@ -1237,4 +1245,19 @@ a.load {
 
 .btn-width{
     width: 40%;
+}
+
+.page-header{
+    height: 20%;
+}
+.page-header{
+	
+    width: 50%;
+    margin-left: 50px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.space{
+    margin-top: 2%;
 }
