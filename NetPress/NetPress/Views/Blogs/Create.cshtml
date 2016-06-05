@@ -19,9 +19,6 @@
     </script>
 </head>
 
-<div style="padding-top: 2%;"></div>
-
-<div style="padding-top: 2%;"></div>
 
 @using (Html.BeginForm()) 
 {
@@ -64,7 +61,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-7">
                     @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @input = "textarea", @id = "mytextarea", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                 </div>
