@@ -188,7 +188,8 @@ namespace NetPress.Controllers
                                             || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
-            blogList = blogList.OrderByDescending(x => x.DateCreated).ToList();
+            blogList = blogList.Where(x => x.StatusObject.StatusID == 1).ToList();
+            blogList = blogList.OrderByDescending(x => x.LastModified).ToList();
             ViewBag.blogList = blogList;
             return PartialView("_item", blogList );
         }
