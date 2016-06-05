@@ -210,6 +210,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\AdminMesh.png" />
     <Content Include="Images\cream.jpg" />
     <Content Include="Images\delete_1.png" />
     <Content Include="Images\edit_1.png" />
