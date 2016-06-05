@@ -1147,6 +1147,7 @@ a.load {
     margin: 10px 10px 5px 5px;
 	font-size: large;
 	border-bottom: 3px solid white;
+    color: #999;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover{
