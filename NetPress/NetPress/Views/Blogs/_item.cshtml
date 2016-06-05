@@ -17,7 +17,7 @@
                             <a href="@Url.Action("Edit", new { id = blog.BlogId })">
                                 <img class="edit-delete" src="~/Images/edit_1.png" />
                             </a>
-                            <a href="@Url.Action("Delete", new { id = blog.BlogId })">
+                            <a  data-toggle="modal" data-target="#delete-confirmation-@blog.BlogId">
                                 <img class="edit-delete" src="~/Images/delete_1.png" />
                             </a>
                         </span>
@@ -33,8 +33,8 @@
                     else
                     {
                         @Html.Raw(blog.Content.Substring(0, 400));
+                        <span>...</span>
                     }
-                    ...
                 </p>
             </div>
             <div class="clearfix"> </div>
@@ -47,7 +47,7 @@
     </div>
     <!-- content -->
 
-    <!-- Modal -->
+    <!-- Content Modal -->
     <div id="BlogModal-@blog.BlogId" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -65,5 +65,28 @@
 
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Content Modal -->
+
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-confirmation-@blog.BlogId" class="delete-confirmation modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="col-md-12 travelling1">
+                    <h4>Are you sure you want to delete this blog?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="confirm-delete">
+                        <button class="btn btn-default btn-lg btn-width" style="margin-right: 20px;" type="button" data-dismiss="modal"> No </button>
+                        <button class="btn btn-danger btn-lg btn-width" type="button" data-dismiss="modal" onclick="location.href='@Url.Action("Delete", new { id = blog.BlogId })'"> Yes </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Delete Confirmation Modal -->
+
 }

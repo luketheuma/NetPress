@@ -1219,3 +1219,21 @@ a.load {
 #bar{
     height: 50px;
 }
+
+.delete-confirmation{
+    width: 50%;
+    margin: 0 auto;
+    top: 30%;
+    overflow-y: hidden;
+    text-align: center
+}
+
+.confirm-delete{
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-width{
+    width: 40%;
+}

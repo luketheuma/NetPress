@@ -146,7 +146,12 @@ namespace NetPress.Controllers
             {
                 return HttpNotFound();
             }
-            return View(blog);
+            else
+            {
+                db.Blogs.Remove(blog);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         // POST: Blogs/Delete/5
