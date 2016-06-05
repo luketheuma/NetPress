@@ -165,6 +165,16 @@ namespace NetPress.Controllers
             return PartialView("_item", blogList );
         }
         
+        public ActionResult Userblogs()
+          {
+              List<Blog> b = db.Blogs.ToList();
+              b = b.Where(x => x.AspNetUser.UserName == User.Identity.Name).ToList();
+              b = b.OrderByDescending(x => x.DateCreated).ToList();
+  
+              ViewBag.blogList = b;
+              
+              return View();
+       }
 
     }
 }
