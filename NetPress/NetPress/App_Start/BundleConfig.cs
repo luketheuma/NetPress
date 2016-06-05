@@ -27,6 +27,11 @@ namespace NetPress
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/style.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Backend/css").Include(
+                      "~/Content/Backend/bootstrap.css",
+                      "~/Content/Backend/site.css",
+                      "~/Content/Backend/style.css"));
         }
     }
 }

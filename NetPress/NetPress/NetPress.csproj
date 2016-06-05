@@ -194,7 +194,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Backend\bootstrap.min.css" />
+    <Content Include="Content\Backend\bootstrap-theme.css" />
+    <Content Include="Content\Backend\bootstrap.css" />
+    <Content Include="Content\Backend\Site.css" />
+    <Content Include="Content\Backend\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

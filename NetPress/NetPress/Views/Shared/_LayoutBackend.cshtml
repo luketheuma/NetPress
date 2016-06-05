@@ -5,10 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NetPress | Backend</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
-    <link rel="stylesheet" href="~/Content/Backend/bootstrap.min.css">
+    <link href="~/Content/footer-distributed-with-address-and-phones.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Backend/css")
+
+
+
 
 </head>
 <body>
@@ -41,10 +45,52 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - NetPress</p>
-        </footer>
     </div>
+
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <img style="width: 35%;" src="~/Images/NetPress_logo.png" />
+            <p class="footer-links">
+                <a href="#">Luke Theuma</a>
+                -
+                <a href="#">Ryan Aquilina</a>
+                -
+                <a href="#">Etienne Galea</a>
+            </p>
+            <p class="footer-company-name">NetPress - @DateTime.Now.Year</p>
+        </div>
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+
+                <p>
+                    University of Malta
+                    <br />
+                    MSD 2080, Msida
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+356 21 420300</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p>netpress@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about" style="text-align:justify;">
+                <span>About the company</span>
+                Netpress is a free blogging website allowing children and adults alike to write their stories for the "world" to see.
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
