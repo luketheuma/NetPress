@@ -1,11 +1,10 @@
 .footer-distributed{
-	background-color: #292c2f;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	background-color: #ffffff;
+	box-shadow: 0 -2px #d8d8d8;
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-
 	padding: 55px 50px;
 	margin-top: 80px;
 }
@@ -38,7 +37,7 @@
 /* Footer links */
 
 .footer-distributed .footer-links{
-	color:  #ffffff;
+	color:  #999;
 	margin: 20px 0 12px;
 	padding: 0;
 }
@@ -64,7 +63,7 @@
 }
 
 .footer-distributed .footer-center i{
-	background-color:  #33383b;
+	background-color:  #299;
 	color: #ffffff;
 	font-size: 25px;
 	width: 38px;
@@ -83,7 +82,7 @@
 
 .footer-distributed .footer-center p{
 	display: inline-block;
-	color: #ffffff;
+	color: #999;
 	vertical-align: middle;
 	margin:0;
 }
@@ -117,7 +116,7 @@
 
 .footer-distributed .footer-company-about span{
 	display: block;
-	color:  #ffffff;
+	color:  #999;
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
@@ -132,7 +131,7 @@
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
-	background-color:  #33383b;
+	background-color:  #299;
 	border-radius: 2px;
 
 	font-size: 20px;
@@ -143,6 +142,7 @@
 	margin-right: 3px;
 	margin-bottom: 5px;
 }
+
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
