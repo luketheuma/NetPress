@@ -1201,8 +1201,17 @@ a.load {
     text-align: justify;
 }
 
-.edit-delete{
+.edit{
     width: 30px;
-    text-align: right;
-    margin-right: 15px;
+    position: absolute;
+    top: 8px;
+    right:60px;
+    font-size: 18px;
+}
+.delete{
+    width: 30px;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
 }

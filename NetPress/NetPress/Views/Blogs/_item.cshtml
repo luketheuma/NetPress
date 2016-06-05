@@ -7,17 +7,20 @@
     <div class="content">
         <div class="travelling">
             <div class="col-md-12 travelling1">
-                <h1 class="col-md-10"><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
-                <div class="col-md-2">
-                    @* if user is admin, or user has blog *@
-                    @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
-                    {
-                        <img class="edit-delete" src="~/Images/edit_1.png" />
-                        <img class="edit-delete" src="~/Images/delete_1.png" />
-                    }
-                </div>
+                <h1><a data-toggle="modal" data-target="#BlogModal-@blog.BlogId"> @blog.Title </a></h1>
 
-                <h5 class="col-md-12">by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                @* if user is admin, or user has blog *@
+                @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
+                {
+                    <a href="@Url.Action("Edit", new { id = blog.BlogId })">
+                        <img class="edit" src="~/Images/edit_1.png" />
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = blog.BlogId })">
+                        <img  class="delete" src="~/Images/delete_1.png"/>
+                    </a>
+                }
+
+                <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
                 <p>
                     @if (blog.Content.Length < 400)
                     {
