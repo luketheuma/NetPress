@@ -21,17 +21,12 @@
 
 <div style="padding-top: 2%;"></div>
 
-<section class="page-header">
-    <span> Create </span>
-</section>
-
 <div style="padding-top: 2%;"></div>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 
-    <div class= "container body-content">
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -81,7 +76,6 @@
                 </div>
             </div>
         </div>
-    </div>
 }
 
 

@@ -8,7 +8,7 @@ h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 html,body{
-	background: url(../images/cream.jpg);
+    background: url(../../Images/AdminMesh.png);
 	font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
 }
@@ -160,6 +160,15 @@ i.aeroplane{
 	text-align:center;
 	padding:20px 10px;
 }
+
+.travelling1 h6{
+	font-size:1em;
+	font-weight:500;
+	color: #757575;
+	font-family: 'Open Sans', sans-serif;
+	text-align:right;
+}
+
 .travelling1 p{
     text-align: justify;
 	font-size:1.3em;
@@ -1133,7 +1142,7 @@ a.load {
 .navbar-inverse{
     border: none;
     background-color: #292c2f;
-    box-shadow: 0 2px #d8d8d8;
+    /* box-shadow: 0 2px #d8d8d8; */
 }
 .navbar-inverse .navbar-nav>li>a{
 	padding: 5px 5px 5px 5px;
