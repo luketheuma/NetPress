@@ -53,16 +53,30 @@
 
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="col-md-12 travelling1">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1>@blog.Title</h1>
+                <div class="travelling1">
+                    <div id="bar">
+                        <h1 id="header">@blog.Title</h1>
+
+                        @* if user is admin, or user has blog *@
+                        @if (User.IsInRole("Admin") || blog.AspNetUser.UserName == User.Identity.Name)
+                        {
+                            <span id="icons">
+                                <a href="@Url.Action("Edit", new { id = blog.BlogId })">
+                                    <img class="edit-delete" src="~/Images/edit_1.png" />
+                                </a>
+                                <a data-toggle="modal" data-target="#delete-confirmation-@blog.BlogId">
+                                    <img class="edit-delete" src="~/Images/delete_1.png" />
+                                </a>
+                            </span>
+                        }
+                    </div>
                     <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName,</a> @blog.DateCreated,<a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
-                </div>
-                <div class="modal-body">
-                    <p>@Html.Raw(blog.Content)</p>
+                  
+                    <div class="modal-body">
+                        <p>@Html.Raw(blog.Content)</p>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Content Modal -->
