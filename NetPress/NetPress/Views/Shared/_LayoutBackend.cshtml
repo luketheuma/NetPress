@@ -8,8 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/style.css">
+    <link rel="stylesheet" href="~/Content/Backend/bootstrap.min.css">
 
 </head>
 <body>
@@ -31,8 +30,6 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Create", "Create", "Blogs")</li>
                 </ul>
 
@@ -56,4 +53,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
