@@ -112,9 +112,8 @@ i.aeroplane{
 	margin: 0em 0em 2em;
 	margin-top: 30px;
 	margin-bottom: 2em;
-	border-radius: 10px;
-	box-shadow: 10px 10px #d8d8d8;
-	border: 1px solid #d8d8d8;
+    /* border-radius: 10px; */
+    border: 1px solid #848484;
 	transition: none;
 }
 .travelling{
@@ -1255,7 +1254,6 @@ a.load {
 .page{
     margin: 10px 0 30px 0;
     padding: 30px 0;
-    text-align: center;
     border: 1px solid #757575;
     border-radius: 30px;
     color: #111;
@@ -1264,6 +1262,7 @@ a.load {
 }
 
 .title{
+    text-align: center;
     padding-bottom: 20px;
     letter-spacing: 10px;
     font-size: 30px;
