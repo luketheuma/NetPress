@@ -16,7 +16,6 @@ namespace NetPress.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        [Required]
         [StringLength(128)]
         public string UserID { get; set; }
 
