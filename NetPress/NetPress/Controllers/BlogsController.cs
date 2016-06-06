@@ -165,7 +165,7 @@ namespace NetPress.Controllers
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
             blog.LastModified = DateTime.Now;
-            blog.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
+            //blog.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
             if (ModelState.IsValid)
             {
                 db.Entry(blog).State = EntityState.Modified;
