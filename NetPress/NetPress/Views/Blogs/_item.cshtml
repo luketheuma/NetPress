@@ -24,7 +24,7 @@
                     }
                 </div>
 
-                <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName</a> in <a href="@Url.Action("Index", "Blogs", new { search = blog.CategoryObject.CategoryName})"> @blog.CategoryObject.CategoryName </a></h5>
+                <h5>by <a href="@Url.Action("Index", "Blogs", new { search = blog.AspNetUser.UserName})"> @blog.AspNetUser.UserName</a> in <a href="@Url.Action("Index", "Blogs", new { categoryId = blog.Category})"> @blog.CategoryObject.CategoryName </a></h5>
                 <p>
                     @if (blog.Content.Length < 400)
                     {
