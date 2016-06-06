@@ -8,6 +8,7 @@ body {
     padding-right: 15px;
     /* background-color: #ffffff; */
     border-radius: 10px;
+    min-height: 200px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
