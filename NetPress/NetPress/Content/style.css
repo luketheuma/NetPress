@@ -1142,7 +1142,7 @@ a.load {
     background-color: #FFF;
     box-shadow: 0 2px #d8d8d8;
 }
-.navbar-inverse .navbar-nav>li>a{
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a:visited {
 	padding: 5px 5px 5px 5px;
     margin: 10px 10px 5px 5px;
 	font-size: large;
@@ -1182,7 +1182,7 @@ a.load {
     background-color: #FFF;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover{
     color: #999;
     background-color: #FFF;
 }
