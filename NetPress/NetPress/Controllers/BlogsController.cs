@@ -91,7 +91,7 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
-            var dateCreated = DateTime.Now.AddHours(2);
+            var dateCreated = DateTime.Now;
             blog.DateCreated = dateCreated;
             blog.LastModified = dateCreated;
             blog.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
@@ -164,7 +164,7 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
-            blog.LastModified = DateTime.Now.AddHours(2);
+            blog.LastModified = DateTime.Now;
             //blog.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
             if (ModelState.IsValid)
             {
