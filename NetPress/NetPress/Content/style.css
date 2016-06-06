@@ -1142,7 +1142,7 @@ a.load {
     background-color: #FFF;
     box-shadow: 0 2px #d8d8d8;
 }
-.navbar-inverse .navbar-nav>li>a{
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a:visited {
 	padding: 5px 5px 5px 5px;
     margin: 10px 10px 5px 5px;
 	font-size: large;
@@ -1182,7 +1182,7 @@ a.load {
     background-color: #FFF;
 }
 
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover{
     color: #999;
     background-color: #FFF;
 }
@@ -1263,3 +1263,18 @@ a.load {
     margin-top: 2%;
 }
 
+.page{
+    margin: 10px 0 30px 0;
+    padding: 30px 0;
+    border: 1px solid #757575;
+    border-radius: 30px;
+    color: #111;
+    background-color: #FFF;
+}
+
+.title{
+    text-align: center;
+    padding-bottom: 20px;
+    letter-spacing: 10px;
+    font-size: 30px;
+}
