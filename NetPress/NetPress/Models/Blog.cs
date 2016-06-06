@@ -31,6 +31,7 @@ namespace NetPress.Models
         public int? Status { get; set; }
 
         [AllowHtml]
+        [Required]
         public string Content { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
