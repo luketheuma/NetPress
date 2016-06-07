@@ -1213,6 +1213,7 @@ a.load {
 }
 
 .edit-delete{
+    cursor: pointer;
     width: 30px;
     text-align: right;
     margin-right: 15px;
