@@ -6,6 +6,7 @@
     <title>NetPress | @ViewBag.Title</title>
     <link rel="shortcut icon" type="image/ico" href="~/Images/NetPress_icon.ico" />
 
+    @* links to styling sheets *@
     <link href="~/Content/footer-distributed-with-address-and-phones.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
@@ -22,6 +23,7 @@
         @RenderBody()
     </div>
 
+    @* public area - Footer *@
     <footer class="footer-distributed">
         <div class="footer-left">
             <img style="width: 35%;" src="~/Images/NetPress_logo.png" />
@@ -67,8 +69,8 @@
         </div>
     </footer>
 
+    @* Links to JS scripts *@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

@@ -217,35 +217,44 @@ namespace NetPress.Controllers
             base.Dispose(disposing);
         }
 
+        // method rendered by Blogs/Index to generate all posts according to inputed parameters
         public ActionResult homepage(string search, int? categoryId)
         {
+            // If no category selected, return all blog posts, else return posts with matching category
             List<Blog> blogList = (categoryId == null) ? db.Blogs.ToList() : db.Blogs.Where(x => x.Category == categoryId).ToList();
             if (search != null && search != "null")
             {
+                // Return blog posts which match search results according to content, title, category, and user respectively
                 blogList = blogList.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.Title.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())
                                             || x.AspNetUser.UserName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
+            // Return blog posts only if status is "published"
             blogList = blogList.Where(x => x.StatusObject.StatusID == 1).ToList();
+            // Order blog list in Descending order according to last modified
             blogList = blogList.OrderByDescending(x => x.LastModified).ToList();
             ViewBag.blogList = blogList;
             return PartialView("_item", blogList );
         }
         
+        // Method for returning the current logged in user's blog posts only (in backend area)
         public ActionResult Userblogs(string search)
         {
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
             
             List<Blog> b = db.Blogs.ToList();
+            // Return blog posts only where the author is equivalent to locked in user's username
             b = b.Where(x => x.AspNetUser.UserName == User.Identity.Name).ToList();
+            // Search for any search results
             if (search != null)
             {
                 b = b.Where(x => x.Content.ToString().ToUpper().Contains(search.ToUpper())
                             || x.Title.ToString().ToUpper().Contains(search.ToUpper())
                             || x.CategoryObject.CategoryName.ToString().ToUpper().Contains(search.ToUpper())).ToList();
             }
+            // Order list in Descending order
             b = b.OrderByDescending(x => x.LastModified).ToList();
   
             ViewBag.blogList = b;

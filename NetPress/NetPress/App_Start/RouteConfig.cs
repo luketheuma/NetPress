@@ -13,6 +13,7 @@ namespace NetPress
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Blogs/Index.cshtml set as default homepage
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
