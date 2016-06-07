@@ -44,8 +44,11 @@ namespace NetPress.Controllers
         // GET: Blogs/Create
         public ActionResult Create()
         {
+            //user redirected to Homepage if not logged in
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
+
+            //populating Category and Status drop down lists for the form
             List<Category> categories = db.Categories.ToList();
             List<Status> statuses = db.Statuses.ToList();
             List<SelectListItem> dropdownCategories = new List<SelectListItem>();
@@ -62,8 +65,6 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
-
-            ViewBag.userid = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
 
             return View();
         }
@@ -75,6 +76,7 @@ namespace NetPress.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
+            //re-populating Category and Status drop down lists for the form to work
             List<Category> categories = db.Categories.ToList();
             List<Status> statuses = db.Statuses.ToList();
             List<SelectListItem> dropdownCategories = new List<SelectListItem>();
@@ -91,6 +93,8 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
+
+            //datecreated, lastmodified and userid updated in the blog before it is saved to the database
             var dateCreated = DateTime.Now;
             blog.DateCreated = dateCreated;
             blog.LastModified = dateCreated;
@@ -109,6 +113,7 @@ namespace NetPress.Controllers
         // GET: Blogs/Edit/5
         public ActionResult Edit(int? id)
         {
+            //user redirected to Homepage if not logged in
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
             if (id == null)
@@ -120,6 +125,8 @@ namespace NetPress.Controllers
             {
                 return HttpNotFound();
             }
+
+            //populating Category and Status drop down lists for the form
             List<Category> categories = db.Categories.ToList();
             List<Status> statuses = db.Statuses.ToList();
             List<SelectListItem> dropdownCategories = new List<SelectListItem>();
@@ -136,6 +143,7 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
+            //userid and datecreated are passed to the view so that they can be re-sent to the POST controller
             ViewBag.userid = blog.AspNetUser.Id;
             ViewBag.dateCreated = blog.DateCreated;
             return View(blog);
@@ -148,6 +156,7 @@ namespace NetPress.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "BlogId,Title,UserID,DateCreated,LastModified,Category,Status,Content")] Blog blog)
         {
+            //re-populating Category and Status drop down lists for the form to work
             List<Category> categories = db.Categories.ToList();
             List<Status> statuses = db.Statuses.ToList();
             List<SelectListItem> dropdownCategories = new List<SelectListItem>();
@@ -164,8 +173,8 @@ namespace NetPress.Controllers
 
             ViewData.Add("DropCategoryItems", dropdownCategories);
             ViewData.Add("DropStatusItems", dropdownStatuses);
+            //LastModified added to blog before being updated in the database
             blog.LastModified = DateTime.Now;
-            //blog.UserID = db.AspNetUsers.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
             if (ModelState.IsValid)
             {
                 db.Entry(blog).State = EntityState.Modified;
@@ -178,6 +187,7 @@ namespace NetPress.Controllers
         // GET: Blogs/Delete/5
         public ActionResult Delete(int? id)
         {
+            //user redirected to Homepage if not logged in
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
             if (id == null)
@@ -241,6 +251,7 @@ namespace NetPress.Controllers
         // Method for returning the current logged in user's blog posts only (in backend area)
         public ActionResult Userblogs(string search)
         {
+            //user redirected to Homepage if not logged in
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Blogs");
             

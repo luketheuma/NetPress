@@ -23,7 +23,8 @@
     <h3>EDIT</h3>
 </div>
 
-
+@*a form for creating a blog. UserID, DateCreated have a hidden form fields which sends their data to the POST controller, 
+while the LastModified field is editied in the POST controller*@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
